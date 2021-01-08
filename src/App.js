@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Switch, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Profile from "./components/Profile";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import Home from "./components/Home";
+import Friends from "./components/Friends";
+import { Container } from "semantic-ui-react";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header />
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/profile/:id">
+          <Profile />
+        </Route>
+        <Route path="/signIn">
+          <SignIn />
+        </Route>
+        <Route path="/signUp">
+          <SignUp />
+        </Route>
+        <Route path="/friends">
+          <Friends />
+        </Route>
+      </Switch>
+    </Container>
   );
-}
+};
 
 export default App;
